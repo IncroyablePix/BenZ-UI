@@ -1,0 +1,11 @@
+/*
+  ANIMATIONS
+*/
+.reveal-base {
+  transition: 0.5s cubic-bezier(.5, 0, 0, 1)!important;
+}
+
+.reveal {
+  opacity: 0!important;
+  transform: translateX(30px)!important;
+}

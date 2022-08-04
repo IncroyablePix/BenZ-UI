@@ -1,0 +1,19 @@
+.modal-window {
+    z-index: 1000000!important;
+    animation: window-appear 0.5s;
+}
+
+.over-everything {
+    z-index: 100000;
+}
+
+@keyframes window-appear {
+    0% {
+        opacity: 0;
+        top: 0;
+    }
+    100% {
+        opacity: 1;
+        top: 2rem;
+    }
+}

@@ -1,0 +1,27 @@
+.order-asc {
+    animation: 0.5s go-asc;
+    transform: rotateX(180deg);
+}
+
+.order-desc {
+    animation: 0.5s go-desc;
+    transform: rotateX(0deg);
+}
+
+@keyframes go-asc {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes go-desc {
+    0% {
+        transform: rotateX(180deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
