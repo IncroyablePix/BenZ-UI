@@ -26,4 +26,11 @@ echo "  $varname: \"$value\"," >> ./env-config.js
 
 done < .env
 
+if [ -z ${REACT_APP_API_URL+x} ];
+then
+  echo "REACT_APP_API_URL is not set, defaulting !";
+else
+  echo "REACT_APP_API_URL: \"$REACT_APP_API_URL\"," >> ./env-config.js
+fi
+
 echo "}" >> ./env-config.js

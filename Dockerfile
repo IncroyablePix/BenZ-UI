@@ -1,7 +1,7 @@
 FROM node:16.13.2-alpine as builder
 WORKDIR /app
 
-# Building yarn project
+# Building npm project
 COPY package.json ./
 COPY package-lock.json ./
 COPY . .
@@ -27,13 +27,12 @@ RUN apk add --no-cache bash
 # chmod
 RUN chmod o+x env-variables.sh
 
+# crlf to lf -> Doesn't work for some reason
+#RUN tr -d '\015' < env-variables.sh > env-variables.sh
+
 # nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Starting nginx
 CMD ["/bin/sh", "-c", "/usr/share/nginx/html/env-variables.sh && nginx -g \"daemon off;\""]
-
-# COPY . ./
-
-# CMD ["yarn", "start"]
 
