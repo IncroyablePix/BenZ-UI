@@ -15,10 +15,10 @@ export default function SideMenu() {
     return (
         <>
             <div ref={navRef} className={clsx("flex flex-col sticky top-0 left-0 h-screen bg-dark-back w-32", deployed && "w-64")}>
-                <h1 className={"flex flex-row h-24 bg-primary"}>
-                    <span className={"flex flex-col m-auto text-main-text"}>
-                        <FontAwesomeIcon icon={faSkull} className={"mx-auto text-3xl"} />
-                        <p className={"text-center text-2xl"}>BenZ</p>
+                <h1 className={"flex flex-row h-24"}>
+                    <span className={"flex flex-col m-auto"}>
+                        <img src={"./skull.png"} className={"mx-auto"} alt={"BenZ logo"} width={50} />
+                        <p className={"text-center text-2xl text-primary font-extralight tracking-widest"}>BenZ</p>
                     </span>
                 </h1>
                 <div className={"flex flex-row h-16"}>

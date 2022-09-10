@@ -20,6 +20,8 @@ const queryKeys = {
     CIPHERS_GET_ALL: "ciphers_get_all",
     RANSOMS_GET_ALL: "ransoms_get_all",
     RANSOMS_GET_ONE: "ransoms_get_one",
+    RANSOMS_CREATE: "ransoms_create",
+    RANSOMS_UPDATE: "ransoms_update",
 };
 
 axiosInstance.interceptors.response.use(

@@ -22,6 +22,20 @@ function createPremakeRansom(ransom: Ransom) {
     });
 }
 
+function updateRansom(ransom: Ransom) {
+    return axiosInstance.put<Ransom>(`/ransoms/${ransom.id}`, {
+        cipherType: CipherType[ransom.cipherType],
+        cryptoAmount: ransom.cryptoAmount,
+        cryptoType: CryptoType[ransom.cryptoType],
+        cryptoAddress: ransom.cryptoAddress,
+        maxEncrypt: ransom.maxEncrypt,
+        message: ransom.message,
+        extension: ransom.extension,
+        description: ransom.description,
+        name: ransom.name,
+    });
+}
+
 export function useAllRansoms() {
     return useQuery([queryKeys.RANSOMS_GET_ALL], getAllRansoms);
 }
@@ -31,7 +45,18 @@ export function useCreatePremakeRansom(mutationOptions: any) {
     return useMutation((ransom: Ransom) => createPremakeRansom(ransom), {
         ...mutationOptions,
         onSuccess: (data: Ransom) => {
-            queryClient.invalidateQueries([queryKeys.RANSOMS_GET_ALL]);
+            mutationOptions.onSuccess?.(data);
+            queryClient.invalidateQueries([queryKeys.RANSOMS_CREATE]);
+        }
+    });
+}
+
+export function useUpdateRansom(mutationOptions: any) {
+    const queryClient = useQueryClient();
+    return useMutation((ransom: Ransom) => updateRansom(ransom), {
+        ...mutationOptions,
+        onSuccess: (data: Ransom) => {
+            queryClient.invalidateQueries([queryKeys.RANSOMS_UPDATE]);
         }
     });
 }
